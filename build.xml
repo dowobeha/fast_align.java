@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<project name="fast_align" default="jar">
+
+	<target name="compile">
+		<mkdir dir="build" />
+		<javac srcdir="src" destdir="build" />
+		<copy todir="build">
+			<fileset dir="src">
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="fast_align.jar" basedir="build">
+			<manifest>
+				<attribute name="Main-Class" value="edu.cmu.clab.FastAlign" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="clean">
+		<delete file="fast_align.jar" />
+		<delete dir="build" />
+	</target>
+
+</project>
